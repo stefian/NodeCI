@@ -18,6 +18,15 @@ module.exports = app => {
     const redisUrl = 'redis://127.0.0.1:6379';
     const client = redis.createClient(redisUrl);
 
+    // Do we have any cached data in Redis related to this query
+
+
+    // if yes, then respond to the request right away and return
+
+
+    // if no, we need to respond to request and update our cache to store the data
+    
+
     const blogs = await Blog.find({ _user: req.user.id });
 
     res.send(blogs);
