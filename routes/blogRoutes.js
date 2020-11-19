@@ -20,13 +20,15 @@ module.exports = app => {
     const util = require('util');   // standard lib in Node runtime; to use for promisifying callback functions //
     client.get = util.promisify(client.get);  // promisifying the .get() function //
 
-    // Do we have any cached data in Redis related to this query
+    // Do we have any cached data in Redis related to this query //
     const cachedBlogs = await client.get(req.user.id);
 
-    // if yes, then respond to the request right away and return
+    // if yes, then respond to the request right away and return //
+    if (cachedBlogs) {
 
+    }
 
-    // if no, we need to respond to request and update our cache to store the data
+    // if no, we need to respond to request and update our cache to store the data //
 
 
     const blogs = await Blog.find({ _user: req.user.id });
