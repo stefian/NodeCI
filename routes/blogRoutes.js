@@ -18,11 +18,10 @@ module.exports = app => {
     const redisUrl = 'redis://127.0.0.1:6379';
     const client = redis.createClient(redisUrl);
     const util = require('util');   // standard lib in Node runtime; to use for promisifying callback functions //
+    client.get = util.promisify(client.get);  // promisifying the .get() function //
 
     // Do we have any cached data in Redis related to this query
-    const cachedBlogs = client.get(req.user.id, () => {
-
-    });
+    const cachedBlogs = client.get(req.user.id);
 
     // if yes, then respond to the request right away and return
 
