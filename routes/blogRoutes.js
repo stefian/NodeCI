@@ -21,7 +21,7 @@ module.exports = app => {
     client.get = util.promisify(client.get);  // promisifying the .get() function //
 
     // Do we have any cached data in Redis related to this query
-    const cachedBlogs = client.get(req.user.id);
+    const cachedBlogs = await client.get(req.user.id);
 
     // if yes, then respond to the request right away and return
 
