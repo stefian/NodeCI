@@ -25,7 +25,7 @@ module.exports = app => {
 
     // if yes, then respond to the request right away and return //
     if (cachedBlogs) {
-
+      return res.send(cachedBlogs);
     }
 
     // if no, we need to respond to request and update our cache to store the data //
