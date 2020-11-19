@@ -19,13 +19,15 @@ module.exports = app => {
     const client = redis.createClient(redisUrl);
 
     // Do we have any cached data in Redis related to this query
-
+    const cachedBlogs = client.get(req.user.id, () => {
+      
+    });
 
     // if yes, then respond to the request right away and return
 
 
     // if no, we need to respond to request and update our cache to store the data
-    
+
 
     const blogs = await Blog.find({ _user: req.user.id });
 
