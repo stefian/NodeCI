@@ -41,7 +41,8 @@ mongoose.Query.prototype.exec = async function () {
   // Otherwise, issue the query & store the result in redis //
   const result = await exec.apply(this, arguments);
 
-  client.set(key, JSON.stringify(result)); // because redis stores strings //
+  // Cacheing in Redis with 10 seconds Expiration - Not retro-active! //
+  client.set(key, JSON.stringify(result), 'EX', 10); 
 
   return result;
 }
