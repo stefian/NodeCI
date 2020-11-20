@@ -1,4 +1,9 @@
 const mongoose = require('mongoose');
+const redis = require('redis');
+const util = require('util');   // to use promisify //
+
+const redisUrl = 'redis://127.0.0.1:6379';
+const client = redis.createClient(redisUrl);
 
 const exec = mongoose.Query.prototype.exec;
 
@@ -15,7 +20,7 @@ mongoose.Query.prototype.exec = function () {
   const key = Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name
   });  // To get a copy of the query options for building the key //
-  console.log(key); // to stringify the key Obj for use with Redis //
+  // console.log(key); // to stringify the key Obj for use with Redis //
 
   return exec.apply(this, arguments); // The original Mongoose exec() code // 
 }
