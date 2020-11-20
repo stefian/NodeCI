@@ -26,5 +26,5 @@ mongoose.Query.prototype.exec = async function () {
 
   // Otherwise, issue the query & store the result in redis //
   const result = await exec.apply(this, arguments);
-  console.log(result);
+  return result;
 }
