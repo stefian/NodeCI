@@ -10,18 +10,18 @@ const exec = mongoose.Query.prototype.exec;
 
 // Overwriting the Query.exec() to include caching with Redis //
 mongoose.Query.prototype.exec = function () {
-  console.log('IM ABOUT TO RUN A QUERY'); // To confirm we can hook into/pre exec() call //
-
-  // this - ref to the current query to execute //
-  // console.log(this.getFilter());  // use getFilter with upgraded Mongoose; TODO: after course ! //
-  // console.log(this.getQuery()); // getQuery() is deprecated //
-  // console.log(this.mongooseCollection.name);  // get Collection name //
+  console.log('IM ABOUT TO RUN A QUERY'); 
   
-  // Object.assign - used to *safely* copy properties from one or more Obj to the empty obj {} //
   const key = Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name
-  });  // To get a copy of the query options for building the key //
-  // console.log(key); // to stringify the key Obj for use with Redis //
+  });  // To get a copy of the query options & collection name for building the key //
+
+  // See if we have a value for key in redis //
+
+  // If we do, return that //
+
+  // Otherwise, issue the query & store the result in redis //
+
 
   return exec.apply(this, arguments); // The original Mongoose exec() code // 
 }
