@@ -5,12 +5,20 @@ const util = require('util');   // to use promisify //
 const redisUrl = 'redis://127.0.0.1:6379';
 const client = redis.createClient(redisUrl);
 client.get = util.promisify(client.get);
-
 const exec = mongoose.Query.prototype.exec;
+
+// Preparing the cache() function to be inherited and used as needed //
+// on the queries where we want caching //
+mongoose.Query.prototype.cache = function () {
+  this.useCache = true;
+  return this;  // to make .cache() a chainable function //
+}
 
 // Overwriting the Query.exec() to include caching with Redis //
 mongoose.Query.prototype.exec = async function () {
-  // console.log('IM ABOUT TO RUN A QUERY'); //
+  if (!this.useCache) {
+    return exec.apply(this, arguments);
+  }
   
   const key = JSON.stringify(Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name
