@@ -9,8 +9,10 @@ const exec = mongoose.Query.prototype.exec;
 
 // Preparing the cache() function to be inherited and used as needed //
 // on the queries where we want caching //
-mongoose.Query.prototype.cache = function () {
+mongoose.Query.prototype.cache = function (options = {}) {
   this.useCache = true;
+  this.hashKey = JSON.stringify(options.key || ''); // use '' to avoid an undefined hashKey //
+
   return this;  // to make .cache() a chainable function //
 }
 
