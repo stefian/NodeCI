@@ -4,6 +4,7 @@ const util = require('util');   // to use promisify //
 
 const redisUrl = 'redis://127.0.0.1:6379';
 const client = redis.createClient(redisUrl);
+client.get = util.promisify(client.get);
 
 const exec = mongoose.Query.prototype.exec;
 
