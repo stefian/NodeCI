@@ -9,7 +9,7 @@ mongoose.Query.prototype.exec = function () {
   // this - ref to the current query to execute //
   // console.log(this.getFilter());  // use getFilter with upgraded Mongoose; TODO: after course ! //
   console.log(this.getQuery()); // getQuery() is deprecated //
-  
+  console.log(this.mongooseCollection.name);  // get Collection name //
 
   return exec.apply(this, arguments); // The original Mongoose exec() code // 
 }
