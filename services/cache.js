@@ -9,7 +9,7 @@ client.get = util.promisify(client.get);
 const exec = mongoose.Query.prototype.exec;
 
 // Overwriting the Query.exec() to include caching with Redis //
-mongoose.Query.prototype.exec = function () {
+mongoose.Query.prototype.exec = async function () {
   // console.log('IM ABOUT TO RUN A QUERY'); //
   
   const key = JSON.stringify(Object.assign({}, this.getQuery(), {
