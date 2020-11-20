@@ -4,7 +4,7 @@ const util = require('util');   // to use promisify //
 
 const redisUrl = 'redis://127.0.0.1:6379';
 const client = redis.createClient(redisUrl);
-client.get = util.promisify(client.get);
+client.hget = util.promisify(client.hget);
 const exec = mongoose.Query.prototype.exec;
 
 // Preparing the cache() function to be inherited and used as needed //
@@ -27,7 +27,7 @@ mongoose.Query.prototype.exec = async function () {
   }));  // To get a copy of the query options & collection name for building the key //
 
   // See if we have a value for key in redis //
-  const cacheValue = await client.get(key);
+  const cacheValue = await client.hget(this.hashKey, key);
 
   // If we do, return that //
   if (cacheValue) {
@@ -44,7 +44,7 @@ mongoose.Query.prototype.exec = async function () {
   const result = await exec.apply(this, arguments);
 
   // Cacheing in Redis with 10 seconds Expiration - Not retro-active! //
-  client.set(key, JSON.stringify(result), 'EX', 10); 
+  client.hset(this.hashKey, key, JSON.stringify(result), 'EX', 10); 
 
   return result;
 }
