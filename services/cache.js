@@ -15,7 +15,7 @@ mongoose.Query.prototype.exec = function () {
   const key = Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name
   });  // To get a copy of the query options for building the key //
-  console.log(key);
+  console.log(key); // to stringify the key Obj for use with Redis //
 
   return exec.apply(this, arguments); // The original Mongoose exec() code // 
 }
