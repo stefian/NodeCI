@@ -8,8 +8,14 @@ mongoose.Query.prototype.exec = function () {
 
   // this - ref to the current query to execute //
   // console.log(this.getFilter());  // use getFilter with upgraded Mongoose; TODO: after course ! //
-  console.log(this.getQuery()); // getQuery() is deprecated //
-  console.log(this.mongooseCollection.name);  // get Collection name //
+  // console.log(this.getQuery()); // getQuery() is deprecated //
+  // console.log(this.mongooseCollection.name);  // get Collection name //
+  
+  // Object.assign - used to *safely* copy properties from one or more Obj to the empty obj {} //
+  const key = Object.assign({}, this.getQuery(), {
+    collection: this.mongooseCollection.name
+  });  // To get a copy of the query options for building the key //
+  console.log(key);
 
   return exec.apply(this, arguments); // The original Mongoose exec() code // 
 }
