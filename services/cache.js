@@ -10,13 +10,14 @@ const exec = mongoose.Query.prototype.exec;
 
 // Overwriting the Query.exec() to include caching with Redis //
 mongoose.Query.prototype.exec = function () {
-  console.log('IM ABOUT TO RUN A QUERY'); 
+  // console.log('IM ABOUT TO RUN A QUERY'); //
   
-  const key = Object.assign({}, this.getQuery(), {
+  const key = JSON.stringify(Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name
-  });  // To get a copy of the query options & collection name for building the key //
+  }));  // To get a copy of the query options & collection name for building the key //
 
   // See if we have a value for key in redis //
+  const cacheValue = await client.get(key);
 
   // If we do, return that //
 
