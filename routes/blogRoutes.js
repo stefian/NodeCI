@@ -37,5 +37,7 @@ module.exports = app => {
     } catch (err) {
       res.send(400, err);
     }
+
+    clearHash(req.user.id);
   });
 };
