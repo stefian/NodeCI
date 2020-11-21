@@ -38,6 +38,6 @@ module.exports = app => {
       res.send(400, err);
     }
 
-    clearHash(req.user.id);
+    // clearHash(req.user.id);  // before implementing cache clearing w middleware //
   });
 };
