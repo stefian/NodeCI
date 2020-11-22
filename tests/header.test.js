@@ -8,5 +8,6 @@ test('Adds 2 numbers', () => {
 
 test('We can launch a browser', async () => {
   const browser = await puppeteer.launch({});
+  const page = await browser.newPage();
   
 });
