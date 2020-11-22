@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer');
 
+jest.setTimeout(30000);
+
 test('Adds 2 numbers', () => {
   const sum = 1 + 2;  
 
