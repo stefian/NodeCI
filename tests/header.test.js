@@ -16,9 +16,16 @@ afterEach(async () => {
 
 
 test('the header has the correct text', async () => {
-
   // Get the text from the DOM element a.bran-logo //
   const text = await page.$eval('a.brand-logo', el => el.innerHTML);
 
   expect(text).toEqual('Blogster');
+});
+
+test('clicking login starts oauth flow', async () => {
+  await page.click('.right a');
+
+  const url = await page.url();
+
+  console.log(url);
 });
