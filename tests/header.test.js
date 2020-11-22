@@ -6,6 +6,7 @@ test('Adds 2 numbers', () => {
   expect(sum).toEqual(3);
 });
 
-test('We can launch a browser', () => {
-
+test('We can launch a browser', async () => {
+  const browser = await puppeteer.launch({});
+  
 });
