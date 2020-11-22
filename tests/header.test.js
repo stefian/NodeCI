@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 let browser, page;
 
-beforeEach(() => {
+beforeEach(async () => {
   browser = await puppeteer.launch({
     headless: false
   });
