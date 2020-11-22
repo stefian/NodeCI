@@ -7,7 +7,9 @@ test('Adds 2 numbers', () => {
 });
 
 test('We can launch a browser', async () => {
-  const browser = await puppeteer.launch({});
+  const browser = await puppeteer.launch({
+    headless: false
+  });
   const page = await browser.newPage();
-  
+
 });
