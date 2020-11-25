@@ -39,6 +39,8 @@ test('When signed in, shows logout button', async () => {
       user: id
     }
   };
-  const sessionString = Buffer.from(JSON.stringify(sessionObject)).toString('base64');
-
+  const sessionString = Buffer.from(
+    JSON.stringify(sessionObject)).toString('base64');
+  
+  const Keygrip = require('keygrip');
 });
