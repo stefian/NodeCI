@@ -43,4 +43,6 @@ test('When signed in, shows logout button', async () => {
     JSON.stringify(sessionObject)).toString('base64');
   
   const Keygrip = require('keygrip');
+  const keys = require('../config/keys');
+
 });
