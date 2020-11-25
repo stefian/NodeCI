@@ -44,5 +44,6 @@ test('When signed in, shows logout button', async () => {
   
   const Keygrip = require('keygrip');
   const keys = require('../config/keys');
+  const keygrip = new Keygrip([keys.cookieKey]);
 
 });
