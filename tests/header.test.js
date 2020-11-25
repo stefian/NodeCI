@@ -29,3 +29,7 @@ test('clicking login starts oauth flow', async () => {
 
   expect(url).toMatch(/accounts\.google\.com/);
 });
+
+test('When signed in, shows logout button', async () => {
+
+});
