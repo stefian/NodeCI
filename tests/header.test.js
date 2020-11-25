@@ -31,5 +31,7 @@ test('clicking login starts oauth flow', async () => {
 });
 
 test('When signed in, shows logout button', async () => {
+  const id = '5fb2a9e25f0b478e40c16a3b';  // Dev user from Mongo users collection //
+
 
 });
