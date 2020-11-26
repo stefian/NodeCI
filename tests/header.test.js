@@ -54,5 +54,5 @@ test.only('When signed in, shows logout button', async () => {
 
   const text = await page.$eval('a[href="/auth/logout"]', el => el.innerHTML);
 
-  expect(text).toEqual('Logout');
+  expect(text).toEqual('Logout'); 
 });
