@@ -47,10 +47,10 @@ test.only('When signed in, shows logout button', async () => {
   const keygrip = new Keygrip([keys.cookieKey]);
   const sig = keygrip.sign('session=' + sessionString);  // session= + - is how the Cookie lib is doing this //
 
-  // await page.goto('localhost:3000'); // Must be on the domain to associate the cookie with it //
+  // await page.goto('http://localhost:3000'); // Must be on the domain to associate the cookie with it //
   await page.setCookie({ name: 'session', value: sessionString, domain: 'localhost:3000' });
   await page.setCookie({ name: 'session.sig', value: sig, domain: 'localhost:3000' });
-  // await page.goto('localhost:3000'); // Refresh the page after cookie setup //
+  // await page.goto('http://localhost:3000'); // Refresh the page after cookie setup //
   await page.reload({ waitUntil: 'domcontentloaded' });
 
   await page.waitForSelector('a[href="/auth/logout"]'); // test might fail here instead of expectation statement //
