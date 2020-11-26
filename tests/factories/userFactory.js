@@ -3,5 +3,5 @@ const User = mongoose.model('User');
 
 // Create a new user in MongoDB //
 module.exports = () => {
-  return new User({}).save();
+  return new User({}).save(); // async - returns a Promise //
 };
