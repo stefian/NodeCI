@@ -4,7 +4,7 @@ let browser, page;
 
 beforeEach(async () => {
   browser = await puppeteer.launch({
-    headless: false,
+    headless: true
   });
   page = await browser.newPage();
   await page.goto('localhost:3000');
