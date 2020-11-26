@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const sessionFactory = require('./factories/sessionFactory');
 
 let browser, page;
 
@@ -31,24 +32,12 @@ test('clicking login starts oauth flow', async () => {
 });
 
 test('When signed in, shows logout button', async () => {
-  const id = '5fb2a9e25f0b478e40c16a3b';  // Dev user from Mongo users collection //
+  // const id = '5fb2a9e25f0b478e40c16a3b';  // Dev user from Mongo users collection //
 
-  const Buffer = require('safe-buffer').Buffer;
-  const sessionObject = {
-    passport: {
-      user: id
-    }
-  };
-  const sessionString = Buffer.from(
-    JSON.stringify(sessionObject)).toString('base64');
-  
-  const Keygrip = require('keygrip');
-  const keys = require('../config/keys');
-  const keygrip = new Keygrip([keys.cookieKey]);
-  const sig = keygrip.sign('session=' + sessionString);  // session= + - is how the Cookie lib is doing this //
+  const { session, sig } = sessionFactory();
 
   // await page.goto('http://localhost:3000'); // Must be on the domain to associate the cookie with it //
-  await page.setCookie({ name: 'session', value: sessionString, domain: 'localhost:3000' });
+  await page.setCookie({ name: 'session', value: session, domain: 'localhost:3000' });
   await page.setCookie({ name: 'session.sig', value: sig, domain: 'localhost:3000' });
   // await page.goto('http://localhost:3000'); // Refresh the page after cookie setup //
   await page.reload({ waitUntil: 'domcontentloaded' });
