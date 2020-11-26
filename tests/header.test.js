@@ -4,7 +4,7 @@ let browser, page;
 
 beforeEach(async () => {
   browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
   });
   page = await browser.newPage();
   await page.goto('localhost:3000');
@@ -30,7 +30,7 @@ test('clicking login starts oauth flow', async () => {
   expect(url).toMatch(/accounts\.google\.com/);
 });
 
-test('When signed in, shows logout button', async () => {
+test.only('When signed in, shows logout button', async () => {
   const id = '5fb2a9e25f0b478e40c16a3b';  // Dev user from Mongo users collection //
 
   const Buffer = require('safe-buffer').Buffer;
@@ -51,5 +51,5 @@ test('When signed in, shows logout button', async () => {
   await page.setCookie({ name: 'session', value: sessionString });
   await page.setCookie({ name: 'session.sig', value: sig });
   await page.goto('localhost:3000'); // Refresh the page after cookie setup //
-  
+
 });
