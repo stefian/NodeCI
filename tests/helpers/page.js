@@ -34,10 +34,10 @@ class CustomPage {
     await this.page.waitForSelector('a[href="/auth/logout"]'); // tests might fail here instead of expectation statement //
   }
 
-  async getContentsOf() {
-
+  async getContentsOf(selector) {
+    return this.page.$eval(selector, el => el.innerHTML);
   }
-  
+
 }
 
 module.exports = CustomPage;
