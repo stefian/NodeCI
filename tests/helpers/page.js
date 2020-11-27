@@ -30,7 +30,8 @@ class CustomPage {
 
     await this.page.setCookie({ name: 'session', value: session, domain: 'localhost:3000' });
     await this.page.setCookie({ name: 'session.sig', value: sig, domain: 'localhost:3000' });
-    await this.page.reload({ waitUntil: 'domcontentloaded' });
+    // await this.page.reload({ waitUntil: 'domcontentloaded' });
+    await this.page.goto('http://localhost:3000/blogs');
     await this.page.waitForSelector('a[href="/auth/logout"]'); // tests might fail here instead of expectation statement //
   }
 
