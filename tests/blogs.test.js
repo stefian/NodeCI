@@ -13,6 +13,6 @@ afterEach(async () => {
 
 test('When logged in, can see blog create form', async () => {
   await page.login();
-  await page.goto('http://localhost:3000/blogs');
+  // await page.goto('http://localhost:3000/blogs'); //
 
 });
