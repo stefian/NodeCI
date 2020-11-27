@@ -33,6 +33,11 @@ class CustomPage {
     await this.page.reload({ waitUntil: 'domcontentloaded' });
     await this.page.waitForSelector('a[href="/auth/logout"]'); // tests might fail here instead of expectation statement //
   }
+
+  async getContentsOf() {
+
+  }
+  
 }
 
 module.exports = CustomPage;

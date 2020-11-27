@@ -11,7 +11,6 @@ afterEach(async () => {
   await page.close();
 });
 
-
 test('the header has the correct text', async () => {
   // Get the text from the DOM element a.bran-logo //
   const text = await page.$eval('a.brand-logo', el => el.innerHTML);
