@@ -1,2 +1,5 @@
-const Page = require('puppeteer/lib/page');
+const Page = require('puppeteer/lib/Page');
 
+Page.prototype.login = function () {
+  
+};
