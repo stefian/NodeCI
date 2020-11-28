@@ -23,6 +23,11 @@ describe('When logged in', async () => {
     expect(label).toEqual('Blog Title');
   });
 
+  describe('And using valid inputs', async () => {
+    
+  });
+  
+
   describe('And using invalid inputs', async () => {
     beforeEach(async () => {
       // No input = invalid input //
