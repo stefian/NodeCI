@@ -19,3 +19,7 @@ test('When logged in, can see blog create form', async () => {
 
   expect(label).toEqual('Blog Title');
 });
+
+describe('When logged in', async () => {
+
+});
