@@ -24,6 +24,11 @@ describe('When logged in', async () => {
   });
 
   describe('And using invalid inputs', async () => {
+    beforeEach(async () => {
+      // No input = invalid input //
+      await page.click('form button'); // Click the Submit button of new blog form //
+    });
+
     test('the form shows an error message', async () => {
 
     });
