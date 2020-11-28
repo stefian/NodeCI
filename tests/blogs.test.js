@@ -24,9 +24,14 @@ describe('When logged in', async () => {
   });
 
   describe('And using valid inputs', async () => {
-    
+    test('Submitting takes user to review screen', async () => {
+      
+    });
+
+    test('Submitting then saving adds blog to index page', async () => {
+      
+    });
   });
-  
 
   describe('And using invalid inputs', async () => {
     beforeEach(async () => {
