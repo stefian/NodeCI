@@ -33,8 +33,8 @@ describe('When logged in', async () => {
       const titleError = await page.getContentsOf('.title .red-text');
       const contentError = await page.getContentsOf('.content .red-text');
 
-      expect(titleError).toEqual('You must ptovide a value');
-      expect(contentError).toEqual('You must ptovide a value');
+      expect(titleError).toEqual('You must provide a value');
+      expect(contentError).toEqual('You must provide a value');
     });
   });
 
