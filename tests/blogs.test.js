@@ -22,4 +22,11 @@ describe('When logged in', async () => {
 
     expect(label).toEqual('Blog Title');
   });
+
+  describe('And using invalid inputs', async () => {
+    test('the form shows an error message', async () => {
+
+    });
+  });
+
 });
