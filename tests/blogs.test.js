@@ -11,20 +11,15 @@ afterEach(async () => {
   await page.close();
 });
 
-test('When logged in, can see blog create form', async () => {
-  await page.login();
-  await page.click('a.btn-floating'); // click on the + button //
-
-  const label = await page.getContentsOf('form label');
-
-  expect(label).toEqual('Blog Title');
-});
-
 describe('When logged in', async () => {
   beforeEach(async () => {
     await page.login();
-    await page.click('a.btn-floating');
+    await page.click('a.btn-floating');  // click on the + button //
   });
 
-  
+  test('can see blog create form', async () => {
+    const label = await page.getContentsOf('form label');
+
+    expect(label).toEqual('Blog Title');
+  });
 });
