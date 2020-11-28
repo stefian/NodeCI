@@ -24,6 +24,12 @@ describe('When logged in', async () => {
   });
 
   describe('And using valid inputs', async () => {
+    beforeEach(async () => {
+      await page.type('.title input', 'My Title');
+      await page.type('.content input', 'My Content');
+      await page.click('form button');
+    });
+
     test('Submitting takes user to review screen', async () => {
       
     });
