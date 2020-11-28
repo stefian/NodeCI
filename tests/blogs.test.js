@@ -31,7 +31,9 @@ describe('When logged in', async () => {
     });
 
     test('Submitting takes user to review screen', async () => {
-      
+      const text = await page.getContentsOf('h5');
+
+      expect(text).toEqual('Please confirm your entries');
     });
 
     test('Submitting then saving adds blog to index page', async () => {
