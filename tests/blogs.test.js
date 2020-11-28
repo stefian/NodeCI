@@ -30,7 +30,11 @@ describe('When logged in', async () => {
     });
 
     test('the form shows an error message', async () => {
+      const titleError = await page.getContentsOf('.title .red-text');
+      const contentError = await page.getContentsOf('.content .red-text');
 
+      expect(titleError).toEqual('You must ptovide a value');
+      expect(contentError).toEqual('You must ptovide a value');
     });
   });
 
