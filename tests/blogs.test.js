@@ -21,5 +21,10 @@ test('When logged in, can see blog create form', async () => {
 });
 
 describe('When logged in', async () => {
+  beforeEach(async () => {
+    await page.login();
+    await page.click('a.btn-floating');
+  });
 
+  
 });
