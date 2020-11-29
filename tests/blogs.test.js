@@ -81,5 +81,6 @@ describe('User is not logged in', async () => {
       }
     );
 
+    console.log(result);
   });
 });
