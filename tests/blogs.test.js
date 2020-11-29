@@ -70,7 +70,7 @@ describe('User is not logged in', async () => {
     const result = await page.evaluate(
       // Try to Create a new blog post //
       () => {
-        fetch('/api/blogs', {
+        return fetch('/api/blogs', {
           method: 'POST',
           credentials: 'same-origin',
           headers: {
