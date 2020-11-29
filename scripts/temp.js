@@ -2,7 +2,7 @@
 
 // Try to Create a new blog post //
 () => {
-  fetch('/api/blogs', {
+  return fetch('/api/blogs', {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
@@ -14,7 +14,7 @@
 
 // Try to Get the list of blog posts //
 () => {
-  fetch('/api/blogs', {
+  return fetch('/api/blogs', {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
