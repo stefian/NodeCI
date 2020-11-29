@@ -65,6 +65,14 @@ class CustomPage {
       }).then(res => res.json());
     }, path, data);
   }
+
+  execRequests(actions) { // returns an array of promises //
+    return Promise.all(  // wait for all promises to resolve and return a single compounded promise //
+      actions.map(({ method, path, data }) => {
+        return this[method](path, data); // get will ignore an undefined data //
+      })
+    );
+  }
 }
 
 module.exports = CustomPage;
