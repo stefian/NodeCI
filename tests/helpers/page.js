@@ -54,7 +54,7 @@ class CustomPage {
 
   post(path, data) {
     // Try to POST a record //
-    return page.evaluate((_path, _data) => {
+    return this.page.evaluate((_path, _data) => {
       return fetch(_path, {
         method: 'POST',
         credentials: 'same-origin',
