@@ -81,6 +81,6 @@ describe('User is not logged in', async () => {
       }
     );
 
-    console.log(result);
+    expect(result).toEqual({ error: 'You must log in!' });
   });
 });
