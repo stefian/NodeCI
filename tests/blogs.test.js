@@ -62,5 +62,24 @@ describe('When logged in', async () => {
       expect(contentError).toEqual('You must provide a value');
     });
   });
+});
 
+describe('User is not logged in', async () => {
+  test('User cannot crreate blog posts', async () => {
+
+    const result = await page.evaluate(
+      // Try to Create a new blog post //
+      () => {
+        fetch('/api/blogs', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ title: 'My Title', content: 'My Content' })
+        }).then(res => res.json());
+      }
+    );
+
+  });
 });
