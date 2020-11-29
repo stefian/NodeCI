@@ -11,3 +11,14 @@
     body: JSON.stringify({ title: 'My Title', content: 'My Content' })
   });
 }
+
+// Try to Get the list of blog posts //
+() => {
+  fetch('/api/blogs', {
+    method: 'GET',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type':'application/json'
+    }
+  });
+}
