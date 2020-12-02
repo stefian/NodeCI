@@ -6,7 +6,7 @@ services:
   - mongodb
   - redis-server
 env:
-  - NODE_ENV=ci
+  - NODE_ENV=ci PORT=3000
 cache:
   directories:
     - node_modules
@@ -18,4 +18,3 @@ script:
   - nohup npm run start &
   - sleep 3
   - npm run test
-  
