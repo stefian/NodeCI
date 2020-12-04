@@ -56,6 +56,7 @@ class BlogFormReview extends Component {
         <h5>Add An Image</h5>
         <input type="file" accept="image/*" />
 
+        <h5></h5>
         {this.renderButtons()}
       </form>
     );
