@@ -53,6 +53,9 @@ class BlogFormReview extends Component {
         <h5>Please confirm your entries</h5>
         {this.renderFields()}
 
+        <h5>Add An Image</h5>
+        <input type="file" accept="image/*" />
+
         {this.renderButtons()}
       </form>
     );
