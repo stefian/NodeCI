@@ -49,6 +49,11 @@ class BlogFormReview extends Component {
     submitBlog(formValues, history);
   }
 
+  onFileChange(event) {
+    this.setState({ file: event.target.files });
+    console.log(event.target.files);
+  }
+
   render() {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
