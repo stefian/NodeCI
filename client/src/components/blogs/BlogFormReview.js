@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 class BlogFormReview extends Component {
+  state = { file: null };
+
   renderFields() {
     const { formValues } = this.props;
 
